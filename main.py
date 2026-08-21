@@ -90,9 +90,10 @@ def atualizar_filme(filme_id: int, dados: FilmeCreate, db: Session = Depends(get
     filme = db.query(FilmeDB).filter(FilmeDB.id == filme_id).first()
     if filme is None:
         raise HTTPException(status_code=404, detail='Filme não encontrado')
-    filme.nome = dados.nome
-    filme.preco = dados.preco
-    filme.quantidade = dados.quantidade
+    filme.titulo = dados.titulo
+    filme.diretor = dados.diretor
+    filme.genero = dados.genero
+    filme.duracao_minutos = dados.duracao_minutos
     db.commit()
     db.refresh(filme)
     return filme
