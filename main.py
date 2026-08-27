@@ -7,8 +7,11 @@ from schemas import FilmeCreate, FilmeResponse
 from schemas import ProdutoCreate, ProdutoResponse
 from fastapi import HTTPException
 
-Base.metadata.create_all(bind=engine) # cria as tabelas, se ainda não existirem
 app = FastAPI()
+
+@app.on_event("startup")
+def criar_tabelas():
+    Base.metadata.create_all(bind=engine)
 
 @app.get('/produtos', response_model=list[ProdutoResponse])
 def listar_produtos(db: Session = Depends(get_db)):

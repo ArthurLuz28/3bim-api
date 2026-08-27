@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 21/08/2026 às 16:34
+-- Tempo de geração: 21-Ago-2026 às 16:49
 -- Versão do servidor: 10.4.32-MariaDB
--- Versão do PHP: 8.2.12
+-- versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,33 +20,37 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `loja`
 --
+CREATE DATABASE IF NOT EXISTS `loja` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `loja`;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `filmes`
+-- Estrutura da tabela `funcionarios`
 --
 
-CREATE TABLE `filmes` (
+CREATE TABLE `funcionarios` (
   `id` int(11) NOT NULL,
-  `titulo` varchar(100) NOT NULL,
-  `diretor` varchar(100) NOT NULL,
-  `genero` varchar(100) NOT NULL,
-  `duracao_minutos` int(11) NOT NULL
+  `nome` varchar(100) NOT NULL,
+  `cargo` varchar(100) NOT NULL,
+  `departamento` varchar(100) NOT NULL,
+  `salario` float NOT NULL,
+  `status` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `filmes`
+-- Extraindo dados da tabela `funcionarios`
 --
 
-INSERT INTO `filmes` (`id`, `titulo`, `diretor`, `genero`, `duracao_minutos`) VALUES
-(1, 'Família Mitchel e a Revolta das Máquinas', 'Joseph Grahan', 'Reality Show', 3720),
-(2, 'Star Wars e os Sith vencem finalmente', 'Não é da Disney', 'Realidade Aumentada', 4);
+INSERT INTO `funcionarios` (`id`, `nome`, `cargo`, `departamento`, `salario`, `status`) VALUES
+(1, 'Arthur', 'Developer Back-end', 'Back-end', -1600, 'Escravizado'),
+(2, 'João Arthur', 'Developer Front-end', 'Front-end', 3, 'Quase demitido'),
+(3, 'João Gabriel', 'Developer Front-end', 'Front-end', 0, 'Tem que tomar mais café');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `produtos`
+-- Estrutura da tabela `produtos`
 --
 
 CREATE TABLE `produtos` (
@@ -57,45 +61,46 @@ CREATE TABLE `produtos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `produtos`
+-- Extraindo dados da tabela `produtos`
 --
 
 INSERT INTO `produtos` (`id`, `nome`, `preco`, `quantidade`) VALUES
-(1, 'Computador Desktop', 2500, 10);
+(1, 'caneta bic', 4, 20),
+(2, 'caneta bic', 4, 20);
 
 --
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices de tabela `filmes`
+-- Índices para tabela `funcionarios`
 --
-ALTER TABLE `filmes`
+ALTER TABLE `funcionarios`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `ix_filmes_id` (`id`);
+  ADD KEY `ix_funcionarios_id` (`id`);
 
 --
--- Índices de tabela `produtos`
+-- Índices para tabela `produtos`
 --
 ALTER TABLE `produtos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `ix_produtos_id` (`id`);
 
 --
--- AUTO_INCREMENT para tabelas despejadas
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
--- AUTO_INCREMENT de tabela `filmes`
+-- AUTO_INCREMENT de tabela `funcionarios`
 --
-ALTER TABLE `filmes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `funcionarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
