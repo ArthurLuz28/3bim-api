@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 21-Ago-2026 às 16:49
+-- Tempo de geração: 10/09/2026 às 13:46
 -- Versão do servidor: 10.4.32-MariaDB
--- versão do PHP: 8.2.12
+-- Versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -26,31 +26,29 @@ USE `loja`;
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `funcionarios`
+-- Estrutura para tabela `filmes`
 --
 
-CREATE TABLE `funcionarios` (
+CREATE TABLE `filmes` (
   `id` int(11) NOT NULL,
-  `nome` varchar(100) NOT NULL,
-  `cargo` varchar(100) NOT NULL,
-  `departamento` varchar(100) NOT NULL,
-  `salario` float NOT NULL,
-  `status` varchar(100) NOT NULL
+  `titulo` varchar(100) NOT NULL,
+  `diretor` varchar(100) NOT NULL,
+  `genero` varchar(100) NOT NULL,
+  `duracao_minutos` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `funcionarios`
+-- Despejando dados para a tabela `filmes`
 --
 
-INSERT INTO `funcionarios` (`id`, `nome`, `cargo`, `departamento`, `salario`, `status`) VALUES
-(1, 'Arthur', 'Developer Back-end', 'Back-end', -1600, 'Escravizado'),
-(2, 'João Arthur', 'Developer Front-end', 'Front-end', 3, 'Quase demitido'),
-(3, 'João Gabriel', 'Developer Front-end', 'Front-end', 0, 'Tem que tomar mais café');
+INSERT INTO `filmes` (`id`, `titulo`, `diretor`, `genero`, `duracao_minutos`) VALUES
+(1, 'Família Mitchel e a Revolta das Máquinas', 'Joseph Grahan', 'Reality Show', 3720),
+(2, 'Star Wars e os Sith vencem finalmente', 'Não é da Disney', 'Realidade Aumentada', 4);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `produtos`
+-- Estrutura para tabela `produtos`
 --
 
 CREATE TABLE `produtos` (
@@ -61,46 +59,43 @@ CREATE TABLE `produtos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `produtos`
+-- Despejando dados para a tabela `produtos`
 --
 
 INSERT INTO `produtos` (`id`, `nome`, `preco`, `quantidade`) VALUES
-(1, 'caneta bic', 4, 20),
-(2, 'caneta bic', 4, 20);
+(1, 'Computador Desktop', 2500, 10);
 
 --
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices para tabela `funcionarios`
+-- Índices de tabela `filmes`
 --
-ALTER TABLE `funcionarios`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `ix_funcionarios_id` (`id`);
+ALTER TABLE `filmes`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `produtos`
+-- Índices de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `ix_produtos_id` (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT para tabelas despejadas
 --
 
 --
--- AUTO_INCREMENT de tabela `funcionarios`
+-- AUTO_INCREMENT de tabela `filmes`
 --
-ALTER TABLE `funcionarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `filmes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
